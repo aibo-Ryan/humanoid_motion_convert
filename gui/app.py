@@ -25,7 +25,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Motion Target Tools")
-        self.resize(960, 720)
+        self.resize(1280, 720)
         self._build_ui()
 
     def _build_ui(self):
