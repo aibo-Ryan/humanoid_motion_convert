@@ -1,5 +1,5 @@
-  # 忽略所有 markdown 文件
-  *.md
-
-  # 保留根目录的 README.md
-  !/README.md
+# 忽略所有 markdown 文件
+*.md
+simulation/
+# 保留根目录的 README.md
+!/README.md
