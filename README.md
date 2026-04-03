@@ -2,7 +2,7 @@
 ```
 python -m gui.main
 ```
-## 1. PKL可以用于twist、asap。格式必须是：
+## 1. PKL可以用于twist，是由GMR转换来的。格式必须是：
 ```
 ==================================================
 FPS        : 30
@@ -22,3 +22,21 @@ dof_pos shape: (143, 24)
 ==================================================
 ```
 ## 3. 他们的csv和mjlab、beyondmimic的csv维度不一样
+
+## 4. 如果是要给ASAP用，它的pkl格式是：
+
+```
+==================================================
+FPS        : 50
+root_trans_offset        : (630, 3)  dtype=float32
+pose_aa                  : (630, 29, 3)  dtype=float32
+dof                      : (630, 24)  dtype=float32
+root_rot                 : (630, 4)  dtype=float32
+body_pos_w               : (630, 29, 3)  dtype=float32
+body_quat_w              : (630, 29, 4)  dtype=float32
+body_lin_vel_w           : (630, 29, 3)  dtype=float32
+body_ang_vel_w           : (630, 29, 3)  dtype=float32
+joint_vel                : (630, 24)  dtype=float32
+source_format            : 'npz_converted_for_asap'
+==================================================
+```
