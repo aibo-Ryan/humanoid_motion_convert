@@ -1,0 +1,32 @@
+pip install joblib
+
+预设名称	说明	关节数量
+all	        所有关节	29
+lower_body	下半身（含躯干）	15
+upper_body	上半身（含躯干）	16
+legs_only	仅腿部	14
+arms_only	仅手臂	12
+key_points	关键点（手脚头）	6
+
+python vis_motion/vis_pm01_motion.py --motion_file /home/abo/rl_workspace/_dataset/mujoco_motions_pm01/pm01_motion_walk_forward_resampled_30fps.pkl --joint_preset key_points --sphere_radius 0.04
+
+# 预设配置可选：all, lower_body, upper_body, legs_only, arms_only, key_points
+python vis_pm01_motion.py --motion_file data.pkl --joint_preset lower_body
+
+# 或指定具体关节
+python vis_pm01_motion.py --motion_file data.pkl --visible_joints LINK_BASE LINK_FOOT_L LINK_FOOT_R
+
+# 关节球形颜色和大小
+python vis_pm01_motion.py --motion_file data.pkl --sphere_radius 0.05 --sphere_color 0 1 0
+
+# 基础用法 - 显示所有关节
+python vis_motion/vis_pm01_motion.py --motion_file input_twist_pkl/data/hmr4d_results.pkl
+
+# 只显示下肢关节
+python vis_motion/vis_pm01_motion.py --motion_file input_twist_pkl/data/hmr4d_results.pkl --joint_preset lower_body
+
+# 自定义 URDF 路径和播放速度
+python vis_motion/vis_pm01_motion.py \
+    --motion_file input_twist_pkl/data/hmr4d_results.pkl \
+    --asset_file pm01_description/urdf/serial_pm_v2.urdf \
+    --speed_scale 0.5
