@@ -88,10 +88,34 @@ def export_all_to_one_csv(npz_path, output_csv_name):
         final_df = pd.concat([df_meta, df], ignore_index=True)
         
         final_df.to_csv(output_csv_name, index=False, header=False, float_format='%.6f')
-        
+
         print(f"\n--- 导出成功 ---")
         print(f"文件: {output_csv_name}")
         print(f"总列数: {full_matrix.shape[1]} (期望值: 24+24+3+4+3+3 = 61)")
+
+        # 4. 额外导出 Unity 格式 CSV: root_pos(3) + root_rot(4, wxyz) + dof_pos(24) = 31 列
+        root_pos = data['body_pos_w']
+        if root_pos.ndim == 3:
+            root_pos = root_pos[:, 0, :]
+        root_rot = data['body_quat_w']
+        if root_rot.ndim == 3:
+            root_rot = root_rot[:, 0, :]
+        dof_pos = data['joint_pos']
+
+        unity_matrix = np.hstack([root_pos, root_rot, dof_pos])
+        unity_meta = np.zeros((1, unity_matrix.shape[1]))
+        unity_meta[0, 0] = fps
+        unity_df = pd.concat(
+            [pd.DataFrame(unity_meta), pd.DataFrame(unity_matrix)],
+            ignore_index=True,
+        )
+
+        base, ext = os.path.splitext(output_csv_name)
+        unity_csv_name = f"{base}_unity{ext or '.csv'}"
+        unity_df.to_csv(unity_csv_name, index=False, header=False, float_format='%.6f')
+
+        print(f"文件: {unity_csv_name}")
+        print(f"总列数: {unity_matrix.shape[1]} (期望值: 3+4+24 = 31)")
         
     except Exception as e:
         print(f"错误: {e}")

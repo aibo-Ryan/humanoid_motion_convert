@@ -27,21 +27,17 @@ from gui.panels.pkl_to_csv_panel     import PklToCsvPanel
 from gui.panels.csv_to_pkl_panel     import CsvToPklPanel
 from gui.panels.pkl_resample_panel   import PklResamplePanel
 from gui.panels.csv_resample_panel   import CsvResamplePanel
-from gui.panels.isaaclab_npz_panel   import IsaaclabNpzPanel
-from gui.panels.mjlab_npz_base_panel import MjlabNpzBasePanel
-from gui.panels.mjlab_npz_full_panel import MjlabNpzFullPanel
 from gui.panels.load_data_panel      import LoadDataPanel
 from gui.panels.csv_inspect_panel    import CsvInspectPanel
 from gui.panels.vis_motion_panel     import VisMotionPanel
+from gui.panels.twist_to_asap_panel  import TwistToAsapPanel
 
 PANEL_REGISTRY: list = [
     PanelEntry(PklToCsvPanel,      "PKL → CSV",           "Conversion"),
     PanelEntry(CsvToPklPanel,      "CSV → PKL",           "Conversion"),
+    PanelEntry(TwistToAsapPanel,   "TWIST → ASAP",        "Conversion"),
     PanelEntry(PklResamplePanel,   "PKL 重采样",           "Resampling"),
     PanelEntry(CsvResamplePanel,   "CSV 重采样",           "Resampling"),
-    PanelEntry(IsaaclabNpzPanel,   "IsaacLab NPZ→CSV",    "Import"),
-    PanelEntry(MjlabNpzBasePanel,  "MJLab NPZ→CSV",  "Import"),
-    PanelEntry(MjlabNpzFullPanel,  "MJLab NPZ→CSV Full",  "Import"),
     PanelEntry(LoadDataPanel,      "PKL 数据检查",         "Utilities"),
     PanelEntry(CsvInspectPanel,    "CSV 数据检查",         "Utilities"),
     PanelEntry(VisMotionPanel,    "运动可视化",           "Visualization"),
