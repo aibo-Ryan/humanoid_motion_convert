@@ -4,7 +4,7 @@ PM01 人形机器人运动数据处理与可视化工具。
 
 ## GUI 界面
 
-![GUI Preview](doc/gui.png)
+![GUI Preview](doc/gui.png) 
 
 ## 运行
 
