@@ -3,3 +3,8 @@
 simulation/
 # 保留根目录的 README.md
 !/README.md
+
+# Python 编译缓存
+__pycache__/
+*.pyc
+*.pyo
